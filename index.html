@@ -788,6 +788,40 @@
     }
     .ministry-link:hover { gap: 10px; }
 
+    /* ===== SPEAKING BACKGROUND IMAGE ===== */
+    .speaking-bleed {
+      position: relative;
+      overflow: hidden;
+    }
+    .speaking-bleed-img {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 50%;
+      z-index: 0;
+    }
+    .speaking-bleed-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .speaking-bleed-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--rich-black) 0%, rgba(5,10,15,0.6) 50%, rgba(5,10,15,0.3) 100%);
+    }
+    [data-theme="light"] .speaking-bleed-img::after {
+      background: linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.3) 100%);
+    }
+    .speaking-bleed .section-inner { position: relative; z-index: 1; }
+    .speaking-bleed .speaking-card { max-width: 520px; }
+
+    @media (max-width: 1024px) {
+      .speaking-bleed-img { display: none; }
+      .speaking-bleed .speaking-card { max-width: 100%; }
+    }
+
     /* ===== SPEAKING ===== */
     .speaking-card {
       max-width: 680px;
@@ -1190,7 +1224,10 @@
   </section>
 
   <!-- SPEAKING -->
-  <section class="section" id="speaking">
+  <section class="section speaking-bleed" id="speaking">
+    <div class="speaking-bleed-img">
+      <img src="michael-praying.jpeg" alt="Michael Rowntree praying over someone at a conference">
+    </div>
     <div class="section-inner">
       <div class="section-eyebrow reveal">Speaking</div>
       <h2 class="section-title reveal">Invite me to <span class="gradient-text">your event</span></h2>
