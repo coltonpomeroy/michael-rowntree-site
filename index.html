@@ -113,9 +113,19 @@
     [data-theme="light"] .speaking-card::before {
       background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.04), transparent);
     }
+    [data-theme="light"] .speaking-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(3, 52, 71, 0.1);
+    }
+
+    /* About section */
+    [data-theme="light"] .section#about { background: #EAF0F4; }
 
     /* About photo */
     [data-theme="light"] .about-photo { border-color: rgba(13, 148, 136, 0.2); }
+
+    /* Ministry section */
+    [data-theme="light"] .section#ministry { background: #EAF0F4; }
 
     /* Ministry cards */
     [data-theme="light"] .ministry-card:hover {
@@ -146,11 +156,8 @@
       color: #0F172A;
     }
 
-    /* Pull quote */
-    [data-theme="light"] .pull-quote { background: #EAF0F4; }
-
     /* Book section */
-    [data-theme="light"] .book-section { background: #EAF0F4; }
+    [data-theme="light"] .book-section { background: #FFFFFF; }
     [data-theme="light"] .book-section::before {
       background: radial-gradient(ellipse 60% 50% at 20% 50%, rgba(3, 52, 71, 0.04) 0%, transparent 70%);
     }
@@ -596,13 +603,9 @@
     }
 
     /* ===== PULL QUOTE ===== */
-    .pull-quote {
-      background: var(--deep-navy);
-      padding: 80px 48px;
-    }
     .pull-quote-inner {
       max-width: 780px;
-      margin: 0 auto;
+      margin: 48px auto 0;
       border-left: 3px solid var(--bright-teal);
       padding-left: 36px;
     }
@@ -1072,7 +1075,6 @@
       .newsletter-form { grid-template-columns: 1fr; }
       .nl-full { grid-column: span 1; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .pull-quote { padding: 48px 24px; }
       .pull-quote-inner { padding-left: 24px; }
       .social-section { padding: 48px 24px; }
     }
@@ -1152,20 +1154,16 @@
           </p>
         </div>
       </div>
+      <div class="pull-quote-inner reveal">
+        <p class="pull-quote-text">
+          &ldquo;The Spirit didn't come just for the pros.
+          Scripture invites every believer into
+          <span>naturally supernatural living</span>.&rdquo;
+        </p>
+        <p class="pull-quote-attr">&mdash; Michael Rowntree</p>
+      </div>
     </div>
   </section>
-
-  <!-- PULL QUOTE -->
-  <div class="pull-quote">
-    <div class="pull-quote-inner reveal">
-      <p class="pull-quote-text">
-        &ldquo;The Spirit didn't come just for the pros.
-        Scripture invites every believer into
-        <span>naturally supernatural living</span>.&rdquo;
-      </p>
-      <p class="pull-quote-attr">&mdash; Michael Rowntree</p>
-    </div>
-  </div>
 
   <!-- BOOK -->
   <section class="book-section" id="book">
