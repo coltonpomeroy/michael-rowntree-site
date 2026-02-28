@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Rowntree | Pastor, Author & Speaker</title>
+  <meta name="description" content="Michael Rowntree — pastor of Convergence OKC, co-host of The Remnant Radio, and author of The World Made Right. Word & Spirit, both/and, everyone plays.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-teal: #1A6B7C;
+      --forest-green: #2D5A3D;
+      --golden-sun: #E8B830;
+      --ocean-blue: #2D8FA8;
+      --sage-green: #4A8F5C;
+      --slate-blue: #5A7A8A;
+      --meadow-green: #6DB56D;
+      --charcoal: #2A2A2A;
+      --cream: #F5F2E8;
+      --warm-white: #FAF9F6;
+      --white: #ffffff;
+      --golden-hover: #d4a52a;
+      --golden-muted: rgba(232, 184, 48, 0.15);
+      --teal-dark: #145562;
+      --teal-light: rgba(26, 107, 124, 0.08);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+      --font-ui: 'Work Sans', -apple-system, sans-serif;
+
+      --radius: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 107, 124, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(26, 107, 124, 0.99);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-ui);
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--golden-sun); }
+    .nav-cta {
+      background: var(--golden-sun) !important;
+      color: var(--charcoal) !important;
+      padding: 8px 22px !important;
+      border-radius: var(--radius-full) !important;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--golden-hover) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--deep-teal);
+      padding: 24px;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      font-family: var(--font-ui);
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      letter-spacing: 0.04em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--golden-sun); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    /* Stained glass SVG background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Subtle animated glow on the sun */
+    @keyframes sun-pulse {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+    .sun-glow { animation: sun-pulse 4s ease-in-out infinite; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 80px 48px 80px 80px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--golden-sun);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--golden-sun);
+      opacity: 0.5;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--golden-sun);
+    }
+    .gold-rule {
+      width: 60px; height: 3px;
+      background: var(--golden-sun);
+      border: none;
+      margin-bottom: 24px;
+    }
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.75;
+      max-width: 470px;
+      margin-bottom: 36px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      font-family: var(--font-ui);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: var(--golden-sun);
+      color: var(--charcoal);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--golden-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(232,184,48,0.35);
+    }
+    .btn-primary i { font-size: 0.7rem; }
+    .btn-secondary {
+      font-family: var(--font-ui);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.06);
+    }
+    .btn-secondary.on-light {
+      color: var(--deep-teal);
+      border-color: var(--deep-teal);
+    }
+    .btn-secondary.on-light:hover {
+      background: var(--teal-light);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 100px 48px;
+    }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-family: var(--font-ui);
+      color: var(--deep-teal);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--forest-green);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; font-weight: 400; }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--slate-blue);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-top: 40px;
+    }
+    .about-photo-wrap { position: relative; }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius-lg);
+      border: 3px solid var(--cream);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -12px; right: -12px;
+      background: var(--deep-teal);
+      color: var(--white);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(26,107,124,0.25);
+    }
+    .about-text p {
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .about-text p strong { color: var(--forest-green); }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .stat-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      border-left: 3px solid var(--golden-sun);
+    }
+    .stat-label {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--deep-teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--charcoal);
+    }
+
+    /* ===== PULL QUOTE ===== */
+    .pull-quote {
+      background: var(--cream);
+      padding: 80px 48px;
+    }
+    .pull-quote-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      border-left: 4px solid var(--golden-sun);
+      padding-left: 36px;
+    }
+    .pull-quote-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: var(--forest-green);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .pull-quote-text span { color: var(--deep-teal); }
+    .pull-quote-attr {
+      font-family: var(--font-ui);
+      color: var(--slate-blue);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ===== BOOK ===== */
+    .book-section {
+      background: var(--cream);
+      padding: 100px 48px;
+    }
+    .book-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .book-visual {
+      display: flex;
+      justify-content: center;
+    }
+    .book-cover-wrap {
+      width: 260px;
+      perspective: 1200px;
+    }
+    .book-cover {
+      width: 100%;
+      border-radius: 3px 12px 12px 3px;
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.25), -2px 0 8px rgba(0,0,0,0.12);
+      transform: rotateY(-4deg);
+      transition: transform 0.4s;
+      overflow: hidden;
+    }
+    .book-cover:hover { transform: rotateY(0deg); }
+    .book-cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .book-info .section-eyebrow { color: var(--golden-sun); }
+    .book-info .book-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .book-info .book-desc {
+      color: var(--slate-blue);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .book-tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .book-tag {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--deep-teal);
+      background: var(--teal-light);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(26,107,124,0.12);
+    }
+    .book-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== MINISTRY ===== */
+    .ministry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .ministry-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .ministry-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .ministry-card:nth-child(1)::before { background: var(--deep-teal); }
+    .ministry-card:nth-child(2)::before { background: var(--forest-green); }
+    .ministry-card:nth-child(3)::before { background: var(--golden-sun); }
+    .ministry-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    }
+    .ministry-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+    }
+    .ministry-card:nth-child(1) .ministry-icon { background: var(--teal-light); color: var(--deep-teal); }
+    .ministry-card:nth-child(2) .ministry-icon { background: rgba(45,90,61,0.08); color: var(--forest-green); }
+    .ministry-card:nth-child(3) .ministry-icon { background: var(--golden-muted); color: var(--golden-hover); }
+    .ministry-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .ministry-card p {
+      color: var(--slate-blue);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .ministry-link {
+      font-family: var(--font-ui);
+      color: var(--deep-teal);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .ministry-link:hover { gap: 10px; }
+
+    /* ===== SPEAKING ===== */
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+    }
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.05);
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+    .topic-item:hover {
+      border-color: var(--deep-teal);
+      transform: translateX(4px);
+    }
+    .topic-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--deep-teal);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .topic-name {
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+    }
+    .speaking-form {
+      background: var(--deep-teal);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .speaking-form::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -20%;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .speaking-form h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--white);
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .speaking-form > p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .form-group { margin-bottom: 12px; position: relative; }
+    .form-input {
+      font-family: var(--font-ui);
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-size: 0.88rem;
+      transition: border-color 0.2s;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.35); }
+    .form-input:focus { outline: none; border-color: var(--golden-sun); }
+    textarea.form-input { resize: vertical; min-height: 80px; }
+    .form-submit { width: 100%; margin-top: 4px; }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: var(--deep-teal);
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -15%;
+      width: 500px; height: 500px;
+      border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+      background: rgba(45,143,168,0.1);
+    }
+    .newsletter::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; left: 5%;
+      width: 350px; height: 350px;
+      border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%;
+      background: rgba(232,184,48,0.04);
+    }
+    .newsletter-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .newsletter .section-eyebrow { color: var(--golden-sun); }
+    .newsletter .section-title { color: var(--white); }
+    .newsletter .section-desc {
+      color: rgba(255,255,255,0.7);
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+    .newsletter-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .newsletter-form .form-input {
+      background: var(--white);
+      border: none;
+      color: var(--charcoal);
+      border-radius: var(--radius);
+    }
+    .newsletter-form .form-input::placeholder { color: var(--slate-blue); }
+    .newsletter-form .form-input:focus { box-shadow: 0 0 0 3px rgba(232,184,48,0.3); }
+    .nl-full { grid-column: span 2; }
+
+    /* ===== SOCIAL ===== */
+    .social-section {
+      background: var(--forest-green);
+      padding: 60px 48px;
+      text-align: center;
+    }
+    .social-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .social-icon {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: rgba(245,242,232,0.1);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .social-icon:hover {
+      background: var(--golden-sun);
+      color: var(--charcoal);
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--forest-green);
+      padding: 56px 48px 28px;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .footer-brand p {
+      color: rgba(245,242,232,0.5);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-top: 10px;
+      max-width: 260px;
+    }
+    .footer-col-title {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--golden-sun);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(245,242,232,0.6);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      padding: 3px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(245,242,232,0.1);
+      text-align: center;
+      color: rgba(245,242,232,0.3);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-content { padding: 60px 40px; }
+      .about-grid { grid-template-columns: 280px 1fr; gap: 40px; }
+      .ministry-grid { grid-template-columns: 1fr; max-width: 520px; }
+      .speaking-grid { grid-template-columns: 1fr; }
+      .book-card { grid-template-columns: 1fr 1.2fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { padding: 40px 24px; max-width: 100%; }
+      .section { padding: 64px 24px; }
+      .book-section { padding: 64px 24px; }
+      .book-card { grid-template-columns: 1fr; text-align: center; }
+      .book-visual { margin-bottom: 16px; }
+      .book-cover-wrap { width: 200px; }
+      .book-tags { justify-content: center; }
+      .book-actions { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 280px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .newsletter { padding: 64px 24px; }
+      .newsletter-form { grid-template-columns: 1fr; }
+      .nl-full { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .pull-quote { padding: 48px 24px; }
+      .pull-quote-inner { padding-left: 24px; }
+      .social-section { padding: 48px 24px; }
+    }
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Michael Rowntree</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#ministry">Ministry</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#connect" class="nav-cta">Connect</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#book">Book</a>
+    <a href="#ministry">Ministry</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#connect">Connect</a>
+  </div>
+
+  <!-- HERO — Stained-glass landscape inspired by book cover -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sky panels -->
+        <path d="M0 0 L480 0 L440 280 L200 320 L0 240 Z" fill="#1A6B7C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M480 0 L960 0 L920 200 L780 300 L440 280 Z" fill="#2D8FA8" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M960 0 L1440 0 L1440 220 L1100 300 L920 200 Z" fill="#5A7A8A" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M0 240 L200 320 L160 420 L0 380 Z" fill="#2D8FA8" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M200 320 L440 280 L500 400 L360 450 L160 420 Z" fill="#1A6B7C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M440 280 L780 300 L740 420 L500 400 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+
+        <!-- Sun -->
+        <circle cx="820" cy="320" r="70" fill="#E8B830" opacity="0.3" class="sun-glow"/>
+        <circle cx="820" cy="320" r="45" fill="#E8B830" opacity="0.7"/>
+        <circle cx="820" cy="320" r="28" fill="#E8B830"/>
+
+        <!-- Mid-ground hills -->
+        <path d="M780 300 L920 200 L1100 300 L1060 420 L900 480 L740 420 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M1100 300 L1440 220 L1440 440 L1200 500 L1060 420 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+
+        <!-- Foreground landscape panels -->
+        <path d="M0 380 L160 420 L120 560 L0 520 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M160 420 L360 450 L400 580 L280 600 L120 560 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M360 450 L500 400 L580 500 L520 600 L400 580 Z" fill="#6DB56D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M500 400 L740 420 L700 540 L580 500 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M740 420 L900 480 L860 580 L700 540 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M900 480 L1060 420 L1120 540 L980 600 L860 580 Z" fill="#6DB56D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M1060 420 L1200 500 L1160 600 L1120 540 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M1200 500 L1440 440 L1440 620 L1280 640 L1160 600 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+
+        <!-- River flowing through -->
+        <path d="M680 420 C660 480, 620 520, 640 580 C650 620, 620 660, 640 720 C650 760, 630 800, 650 900"
+              fill="none" stroke="#2D8FA8" stroke-width="40" opacity="0.5" stroke-linecap="round"/>
+        <path d="M680 420 C660 480, 620 520, 640 580 C650 620, 620 660, 640 720 C650 760, 630 800, 650 900"
+              fill="none" stroke="#F5F2E8" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- Bottom panels -->
+        <path d="M0 520 L120 560 L80 700 L0 680 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M120 560 L280 600 L300 720 L200 740 L80 700 Z" fill="#6DB56D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M280 600 L520 600 L560 740 L420 760 L300 720 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M700 540 L860 580 L900 720 L780 740 Z" fill="#6DB56D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M860 580 L980 600 L1020 740 L900 720 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M980 600 L1160 600 L1200 740 L1020 740 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M1160 600 L1280 640 L1320 760 L1200 740 Z" fill="#6DB56D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M1280 640 L1440 620 L1440 780 L1320 760 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+
+        <!-- Bottom fill -->
+        <path d="M0 680 L80 700 L200 740 L300 720 L420 760 L560 740 L650 900 L0 900 Z" fill="#2D5A3D" stroke="#F5F2E8" stroke-width="3"/>
+        <path d="M650 900 L780 740 L900 720 L1020 740 L1200 740 L1320 760 L1440 780 L1440 900 Z" fill="#4A8F5C" stroke="#F5F2E8" stroke-width="3"/>
+
+        <!-- Dark overlay for text readability -->
+        <rect x="0" y="0" width="1440" height="900" fill="url(#textOverlay)"/>
+        <defs>
+          <linearGradient id="textOverlay" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1A6B7C" stop-opacity="0.92"/>
+            <stop offset="50%" stop-color="#1A6B7C" stop-opacity="0.78"/>
+            <stop offset="80%" stop-color="#1A6B7C" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#1A6B7C" stop-opacity="0.2"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>Pastor</span><span class="dot"></span>
+        <span>Author</span><span class="dot"></span>
+        <span>Speaker</span>
+      </div>
+      <h1 class="hero-title">
+        The whole gospel,<br><em>for everyone.</em>
+      </h1>
+      <hr class="gold-rule">
+      <p class="hero-subtitle">
+        I'm Michael Rowntree &mdash; pastor, author, and co-host of The Remnant Radio. I believe the Church is at its best when Scripture and the Spirit come together.
+      </p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">About</div>
+      <h2 class="section-title reveal">Word &amp; Spirit, <em>both/and</em></h2>
+      <div class="about-grid">
+        <div class="about-photo-wrap reveal">
+          <img src="images/michael-rowntree.jpg" alt="Michael Rowntree" class="about-photo">
+        </div>
+        <div class="about-text">
+          <p class="reveal">
+            I spent seventeen years in pastoral ministry learning one thing: the Church doesn't have to choose between Reformed depth and Charismatic vitality. Rooted in the <strong>Wimber</strong> tradition and mentored by <strong>Jack Deere</strong>, I'm convinced that Scripture and experience, study and encounter, always belong together.
+          </p>
+          <p class="reveal">
+            On <strong>The Remnant Radio</strong> I get to explore that every week. At <strong>Convergence Church OKC</strong> I get to live it out every Sunday &mdash; with a community where everyone gets to play.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <div class="pull-quote-inner reveal">
+      <p class="pull-quote-text">
+        &ldquo;The Spirit didn't come just for the pros.
+        Scripture invites every believer into
+        <span>naturally supernatural living</span>.&rdquo;
+      </p>
+      <p class="pull-quote-attr">&mdash; Michael Rowntree</p>
+    </div>
+  </div>
+
+  <!-- BOOK -->
+  <section class="book-section" id="book">
+    <div class="book-card reveal">
+      <div class="book-visual">
+        <div class="book-cover-wrap">
+          <div class="book-cover">
+            <img src="images/book-cover.jpg" alt="The World Made Right by Michael Rowntree — Finding Confident Hope in the Book of Revelation">
+          </div>
+        </div>
+      </div>
+      <div class="book-info">
+        <div class="section-eyebrow">New Book</div>
+        <h2 class="book-title">The World Made Right</h2>
+        <p class="book-desc">
+          Most people open Revelation and feel confused, afraid, or both. I think they're missing the point. Revelation isn't a horror movie &mdash; it's a love letter about the world God is putting back together.
+        </p>
+        <p class="book-desc" style="margin-bottom: 20px;">
+          If you've wanted to read the last book of the Bible with hope instead of dread, this is for you.
+        </p>
+        <div class="book-tags">
+          <span class="book-tag">Confident Hope</span>
+          <span class="book-tag">Accessible Eschatology</span>
+          <span class="book-tag">Word &amp; Spirit</span>
+        </div>
+        <div class="book-actions">
+          <a href="#" class="btn-primary">Get the Book <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="btn-secondary on-light">Read a Sample</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINISTRY -->
+  <section class="section" id="ministry">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">Ministry</div>
+      <h2 class="section-title reveal"><strong>Everyone</strong> gets to play</h2>
+      <p class="section-desc reveal">Ministry belongs to the whole body. Podcast, pulpit, or conference stage &mdash; the goal is always the same: equipping ordinary believers to live naturally supernatural lives.</p>
+      <div class="ministry-grid">
+        <div class="ministry-card reveal">
+          <div class="ministry-icon"><i class="fas fa-microphone"></i></div>
+          <h3>The Remnant Radio</h3>
+          <p>Every week we wrestle with theology, church history, and the gifts of the Spirit &mdash; honestly and charitably.</p>
+          <a href="https://www.theremnantradio.com" target="_blank" rel="noopener" class="ministry-link">Listen Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="ministry-card reveal">
+          <div class="ministry-icon"><i class="fas fa-church"></i></div>
+          <h3>Convergence Church OKC</h3>
+          <p>Home. A church in Oklahoma City where deep teaching and the Spirit's presence belong together &mdash; and everyone gets to play.</p>
+          <a href="https://www.convergenceokc.church" target="_blank" rel="noopener" class="ministry-link">Visit Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="ministry-card reveal">
+          <div class="ministry-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Teaching &amp; Equipping</h3>
+          <p>Helping churches and leaders build a culture where the Word and the Spirit come together &mdash; and everyone participates.</p>
+          <a href="#speaking" class="ministry-link">Invite Me <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section class="section" id="speaking" style="background: var(--cream);">
+    <div class="section-inner">
+      <div class="section-eyebrow reveal">Speaking</div>
+      <h2 class="section-title reveal">Invite me to <em>your event</em></h2>
+      <p class="section-desc reveal">Churches, conferences, and retreats. I show up to equip your people, not to put on a show.</p>
+      <div class="speaking-grid">
+        <div class="reveal">
+          <div class="topic-item">
+            <div class="topic-icon"><i class="fas fa-book-open"></i></div>
+            <span class="topic-name">Revelation &amp; Confident Hope</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-icon"><i class="fas fa-fire"></i></div>
+            <span class="topic-name">The Gifts of the Spirit for Every Believer</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-icon"><i class="fas fa-users"></i></div>
+            <span class="topic-name">Building an &ldquo;Everyone Plays&rdquo; Culture</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-icon"><i class="fas fa-cross"></i></div>
+            <span class="topic-name">Naturally Supernatural Living</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-icon"><i class="fas fa-globe"></i></div>
+            <span class="topic-name">Holding Word &amp; Spirit Together</span>
+          </div>
+        </div>
+        <div class="speaking-form reveal">
+          <h3>Get in Touch</h3>
+          <p>Tell me about your church, conference, or retreat and I'll be in touch.</p>
+          <form action="#" method="POST">
+            <div class="form-group"><input type="text" class="form-input" placeholder="Your Name" required></div>
+            <div class="form-group"><input type="email" class="form-input" placeholder="Email Address" required></div>
+            <div class="form-group"><input type="text" class="form-input" placeholder="Church / Organization"></div>
+            <div class="form-group"><textarea class="form-input" placeholder="Tell us about your event..."></textarea></div>
+            <button type="submit" class="btn-primary form-submit">Send Request <i class="fas fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter" id="connect">
+    <div class="newsletter-inner">
+      <div class="section-eyebrow reveal">Newsletter</div>
+      <h2 class="section-title reveal">Stay in the Conversation.</h2>
+      <p class="section-desc reveal">Teaching, encouragement, and book updates &mdash; straight to your inbox.</p>
+      <form class="newsletter-form reveal" action="#" method="POST">
+        <input type="text" class="form-input" placeholder="First Name">
+        <input type="text" class="form-input" placeholder="Last Name">
+        <input type="email" class="form-input nl-full" placeholder="Email Address" required>
+        <button type="submit" class="btn-primary nl-full">Subscribe <i class="fas fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <div class="social-section">
+    <h2 class="social-title reveal">Find Me Online</h2>
+    <div class="social-icons reveal">
+      <a href="https://www.instagram.com/michaelrowntree" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/mtree81" target="_blank" rel="noopener" class="social-icon" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.youtube.com/@theremnantradio" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/theremnantradio" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-brand-name">Michael Rowntree</a>
+        <p>Pastor of Convergence OKC, co-host of The Remnant Radio, and author of <em>The World Made Right</em>. Word &amp; Spirit, both/and, everyone plays.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Media</div>
+        <a href="https://www.theremnantradio.com" target="_blank" rel="noopener">The Remnant Radio</a>
+        <a href="https://www.youtube.com/@theremnantradio" target="_blank" rel="noopener">YouTube</a>
+        <a href="#">Sermons</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="#book">The World Made Right</a>
+        <a href="https://www.convergenceokc.church" target="_blank" rel="noopener">Convergence Church</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Connect</div>
+        <a href="#about">About</a>
+        <a href="#speaking">Speaking</a>
+        <a href="#connect">Newsletter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Michael Rowntree. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu if open
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+
+    // Mobile hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
